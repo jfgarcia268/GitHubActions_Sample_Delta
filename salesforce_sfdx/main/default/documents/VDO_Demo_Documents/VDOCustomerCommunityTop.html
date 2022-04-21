@@ -1,0 +1,35 @@
+
+<html>
+	<head>
+		<title>Industry Community</title>
+		<style type="text/css">
+			#communitywrapper, #bodyDiv, #communityheader{
+				display:none;
+			}
+		</style>
+	    <link href="/resource/VDOInternalResources/css/charts.css" rel="stylesheet" type="text/css"></link>
+	    <link href="/resource/VDOInternalResources/js/slider/slick.css" rel="stylesheet" type="text/css"></link>
+	    <link href="/resource/VDOInternalResources/js/slider/slick-theme.css" rel="stylesheet" type="text/css"></link>
+	    <script src="/resource/VDOInternalResources/js/jquery.js" type="text/javascript"></script>
+	    <script src="/resource/VDOInternalResources/js/slider/slick.min.js" type="text/javascript"></script>
+	    <script src="/resource/VDOInternalResources/js/charts.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="communityheader">
+			<div id="communityheadertop">
+				<div id="communitylogo">
+				</div>
+				<div id="communitysearch">
+					<form id="searchform" action="/search/SmartSearch" method="get">
+						<input type="text" placeholder="Search" name="str" class="searchTextbox"/>
+						<div id="searchButtonDiv" onclick="document.getElementById('searchButton').click();" class="icon-v-search"></div>
+						<input type="submit" value="Search" id="searchButton"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="communitywrapper">
+			<div id="communitysidebar">
+				<iframe src="/apex/VlocityCommunitySidebar" width="100%" height="2500px" frameborder="0" scrolling="no"></iframe>
+			</div>
+			<div id="communitybody">

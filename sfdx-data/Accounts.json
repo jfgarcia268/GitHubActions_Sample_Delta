@@ -1,0 +1,44 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef1"
+            },
+            "Name": "Account1",
+            "BillingCity": "San Francisco",
+            "BillingState": "CA",
+            "vlocity_cmt__Status__c" : "Active"
+        },
+                {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef2"
+            },
+            "Name": "Account2",
+            "BillingCity": "San Francisco",
+            "BillingState": "CA",
+            "vlocity_cmt__Status__c" : "Active"
+        },
+                {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef3"
+            },
+            "Name": "Account3",
+            "BillingCity": "San Francisco",
+            "BillingState": "CA",
+            "vlocity_cmt__Status__c" : "Active"
+        },
+                {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef4"
+            },
+            "Name": "Account4",
+            "BillingCity": "San Francisco",
+            "BillingState": "CA",
+            "vlocity_cmt__Status__c" : "Active"
+        }
+    ]
+}

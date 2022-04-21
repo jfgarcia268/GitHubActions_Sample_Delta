@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Vlocity logo used for custom object tabs.</description>
+    <internalUseOnly>false</internalUseOnly>
+    <name>VDOTabIcon</name>
+    <public>true</public>
+</Document>
