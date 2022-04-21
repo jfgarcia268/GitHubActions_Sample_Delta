@@ -1,5 +1,5 @@
 {
-    "%vlocity_namespace%__AdditionalInformation__c": "Place a new order for consumer mobile services.",
+    "%vlocity_namespace%__AdditionalInformation__c": "Place a new order for consumer mobile services. Test",
     "%vlocity_namespace%__Element__c": [
         "Handset_Buy_English_Element_CreateCart.json",
         "Handset_Buy_English_Element_SetOrderId.json",
