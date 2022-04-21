@@ -8,27 +8,32 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container:
-      image: jfgarcia268/sfdx_vlocity_java:latest
+      image: jfgarcia268/vlocity_sfdx:latest
     steps:  
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: SF deploy	    
       run: |
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        ls -la
+        echo "y" | sfdx plugins:install vlocityestools
         echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
-        if [ -d force-app_delta ]; then
-            rm -rf force-app_delta  
+        if [ -d salesforce_sfdx_delta ]; then
+            rm -rf salesforce_sfdx_delta  
         fi
-        sfdx vlocityestools:sfsource:createdeltapackage -u ALIAS -p cmt -d force-app
-        if [ -d force-app_delta ]; then
+        sfdx vlocityestools:sfsource:createdeltapackage -u ALIAS -p cmt -d salesforce_sfdx
+        if [ -d salesforce_sfdx_delta ]; then
             echo "####### force:source:deploy"
-          sfdx force:source:deploy --sourcepath force-app_delta --targetusername ALIAS --verbose
+          sfdx force:source:deploy --sourcepath salesforce_sfdx_delta --targetusername ALIAS --verbose
         else
           echo "### NO SF DELTA-FOLDER FOUND"
         fi
     - name: Vlocity deploy   
       run: |
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        ls -la
         echo ${{ secrets.PROD_SFDX_URL }} > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
         vlocity -sfdx.username ALIAS -job Deploy_Delta.yaml packDeploy --verbose true --simpleLogging true  
