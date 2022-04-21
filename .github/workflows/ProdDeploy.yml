@@ -1,0 +1,35 @@
+name: Prod Deploy
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: jfgarcia268/sfdx_vlocity_java:latest
+    steps:  
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: SF deploy	    
+      run: |
+        echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
+        sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
+        if [ -d force-app_delta ]; then
+            rm -rf force-app_delta  
+        fi
+        sfdx vlocityestools:sfsource:createdeltapackage -u ALIAS -p cmt -d force-app
+        if [ -d force-app_delta ]; then
+            echo "####### force:source:deploy"
+          sfdx force:source:deploy --sourcepath force-app_delta --targetusername ALIAS --verbose
+        else
+          echo "### NO SF DELTA-FOLDER FOUND"
+        fi
+    - name: Vlocity deploy   
+      run: |
+        echo ${{ secrets.PROD_SFDX_URL }} > env.sfdx
+        sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
+        vlocity -sfdx.username ALIAS -job Deploy_Delta.yaml packDeploy --verbose true --simpleLogging true  
+
