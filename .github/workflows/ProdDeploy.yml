@@ -15,7 +15,7 @@ jobs:
         fetch-depth: 0
     - name: SF deploy	    
       run: |
-        #git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
         ls -la
         echo "y" | sfdx plugins:install vlocityestools
         echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
@@ -32,7 +32,7 @@ jobs:
         fi
     - name: Vlocity deploy   
       run: |
-        #git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
         ls -la
         echo ${{ secrets.PROD_SFDX_URL }} > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
