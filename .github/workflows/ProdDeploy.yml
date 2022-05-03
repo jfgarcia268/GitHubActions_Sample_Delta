@@ -36,5 +36,5 @@ jobs:
         ls -la
         echo ${{ secrets.PROD_SFDX_URL }} > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
-        vlocity -sfdx.username ALIAS -job Deploy_Delta.yaml packDeploy --verbose true --simpleLogging true  
+        #vlocity -sfdx.username ALIAS -job Deploy_Delta.yaml packDeploy --verbose true --simpleLogging true  
 
