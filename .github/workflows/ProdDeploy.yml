@@ -8,5 +8,5 @@ on:
 jobs:
   deploy:
     uses: ./.github/workflows/Deploy.yml
-    with:
+    secrets:
       sfdx_url: ${{ secrets.PROD_SFDX_URL }}

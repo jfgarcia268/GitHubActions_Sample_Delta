@@ -3,7 +3,7 @@ name: Deploy
 on:
   workflow_call:
     inputs:
-      sfdx_url:
+      secrets:
         required: true
         type: string
 jobs:
