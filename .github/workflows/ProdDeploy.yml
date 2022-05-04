@@ -16,7 +16,7 @@ jobs:
         fetch-depth: 0
     - name: SF deploy	    
       run: |
-        #export HOME=/root
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
         echo "HOME: $HOME"
         ls -la
         pwd
