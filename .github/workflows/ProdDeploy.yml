@@ -11,15 +11,16 @@ jobs:
     container:
       image: jfgarcia268/vlocity_sfdx:latest-np
     steps:  
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: SF deploy	    
       run: |
         #export HOME=/root
-        git status
+        echo "HOME: $HOME"
         ls -la
         pwd
+        git status
         echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
         if [ -d salesforce_sfdx_delta ]; then
