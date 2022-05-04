@@ -1,0 +1,29 @@
+name: Code Scan
+
+on:
+  push:
+    branches: [ 'US/**' ]
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    container:
+      image: jfgarcia268/vlocity_sfdx:latest
+    steps:  
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Scan   
+      run: |
+        sfdx plugins:install @salesforce/sfdx-scanner
+        sfdx scanner:run --outfile Result.csv --format csv --target salesforce_sfdx   
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Scan-Result
+        path: ./Result.csv
+    - name: Scan   
+      run: |
+        if [ -f Result.csv ]; then
+          exit 1
+        fi
