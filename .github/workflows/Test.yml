@@ -7,7 +7,7 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     container:
-      image: jfgarcia268/vlocity_sfdx:test
+      image: jfgarcia268/vlocity_sfdx:latest
     steps:  
     - uses: actions/checkout@v2
       with:
