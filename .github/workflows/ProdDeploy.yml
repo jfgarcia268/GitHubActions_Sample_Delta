@@ -14,6 +14,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Test 
+      run: |
+        ls -la
+        la -la .github
+        la -la .github/workflows
     - uses: ./.github/workflows/Deploy.yml
       with:
         sfdx_url: ${{ secrets.PROD_SFDX_URL }}
