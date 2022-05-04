@@ -16,7 +16,7 @@ jobs:
         fetch-depth: 0
     - name: Scan   
       run: |
-        sfdx plugins:install @salesforce/sfdx-scanner
+        export HOME=/root
         sfdx scanner:run --outfile Result.csv --format csv --target salesforce_sfdx   
     - uses: actions/upload-artifact@v3
       with:
