@@ -19,7 +19,7 @@ jobs:
         #export HOME=/root
         git status
         ls -la
-        pwds
+        pwd
         echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
         if [ -d salesforce_sfdx_delta ]; then
