@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    uses: ./.github/workflows/Deploy.yml
+    uses: ./.github/templates/Deploy.yml
     with:
       sfdx_url: ${{ secrets.PROD_SFDX_URL }}
     secrets: inherit
