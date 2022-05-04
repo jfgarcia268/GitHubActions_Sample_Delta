@@ -17,8 +17,8 @@ jobs:
     - name: Test 
       run: |
         ls -la
-        la -la .github
-        la -la .github/workflows
+        ls -la .github
+        ls -la .github/workflows
     - uses: ./.github/workflows/Deploy.yml
       with:
         sfdx_url: ${{ secrets.PROD_SFDX_URL }}
