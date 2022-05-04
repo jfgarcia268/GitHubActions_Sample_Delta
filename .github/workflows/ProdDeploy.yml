@@ -8,8 +8,5 @@ on:
 jobs:
   deploy:
     uses: ./.github/workflows/Deploy.yml
-    runs-on: ubuntu-latest
-    container:
-      image: jfgarcia268/vlocity_sfdx:latest
     with:
       sfdx_url: ${{ secrets.PROD_SFDX_URL }}
