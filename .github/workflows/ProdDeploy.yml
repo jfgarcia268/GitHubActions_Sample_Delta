@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container:
-      image: jfgarcia268/vlocity_sfdx:latest-np
+      image: jfgarcia268/vlocity_sfdx:latest
     steps:  
     - uses: actions/checkout@v3
       with:
@@ -18,10 +18,6 @@ jobs:
       run: |
         export HOME=/root
         git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
-        echo "HOME: $HOME"
-        ls -la
-        pwd
-        git status
         echo ${{ secrets.PROD_SFDX_URL }}  > env.sfdx
         sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
         if [ -d salesforce_sfdx_delta ]; then
