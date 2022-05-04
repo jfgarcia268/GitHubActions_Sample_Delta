@@ -7,6 +7,6 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    uses: ./.github/templates/Deploy.yml
+    uses: ./.github/workflows/Deploy.yml
     with:
       sfdx_url: ${{ secrets.PROD_SFDX_URL }}
