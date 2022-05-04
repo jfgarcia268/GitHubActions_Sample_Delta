@@ -9,6 +9,13 @@ on:
 jobs:
   deploy:
     steps:  
+    runs-on: ubuntu-latest
+    container:
+      image: jfgarcia268/vlocity_sfdx:latest
+    steps:  
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: SF deploy	    
       run: |
         export HOME=/root
