@@ -1,0 +1,41 @@
+name: Deploy
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  workflow_call:
+    inputs:
+      sfdx_url:
+        required: true
+        type: string
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: jfgarcia268/vlocity_sfdx:latest
+    steps:  
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: SF deploy	    
+      run: |
+        export HOME=/root
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        echo ${{ secrets.sfdx_url }}  > env.sfdx
+        sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
+        if [ -d salesforce_sfdx_delta ]; then
+            rm -rf salesforce_sfdx_delta  
+        fi
+        sfdx vlocityestools:sfsource:createdeltapackage -u ALIAS -d salesforce_sfdx
+        if [ -d salesforce_sfdx_delta ]; then
+            echo "####### force:source:deploy"
+          sfdx force:source:deploy --sourcepath salesforce_sfdx_delta --targetusername ALIAS --verbose
+        else
+          echo "### NO SF DELTA-FOLDER FOUND"
+        fi
+    - name: Vlocity deploy   
+      run: |
+        git config --global --add safe.directory /__w/GitHubActions_Sample_Delta/GitHubActions_Sample_Delta
+        echo ${{ secrets.sfdx_url }} > env.sfdx
+        sfdx force:auth:sfdxurl:store -d -a ALIAS -f env.sfdx
+        vlocity -sfdx.username ALIAS -job Deploy_Delta.yaml packDeploy --verbose true --simpleLogging true
+
