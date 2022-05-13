@@ -1,13 +1,15 @@
 name: Test
 
 on:
+  push:
+    branches: [ test ]
   workflow_dispatch:
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     container:
-      image: jfgarcia268/vlocity_sfdx:latest
+      image: jfgarcia268/vlocity_sfdx:test
     steps:  
     - uses: actions/checkout@v2
       with:
