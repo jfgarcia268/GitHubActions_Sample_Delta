@@ -10,11 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jfgarcia268/vlocity_sfdx:test
+      env:
+        HOME: /root
+      options: --pull never
     steps:  
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: Test   
       run: |
-        export HOME=/root
         sfdx vlocityestools:sfsource:createdeltapackage
