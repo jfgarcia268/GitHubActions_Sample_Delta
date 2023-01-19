@@ -17,4 +17,4 @@ jobs:
     - name: Test   
       run: |
         export HOME=/root
-        sfdx vlocityestools:sfsource:createdeltapackage
+        sfdx vlocityestools:auth:login --username  TEST -p TEST -a TEST
