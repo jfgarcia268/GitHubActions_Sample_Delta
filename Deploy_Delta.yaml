@@ -2,6 +2,6 @@ projectPath: ./vlocity
 gitCheck: true
 autoUpdateSettings: true
 autoRetryErrors: true
-puppeteerExecutablePath: '/root/.cache/puppeteer/chrome/linux-113.0.5672.63/chrome-linux/chrome'
+puppeteerExecutablePath: '/root/.cache/puppeteer/chrome/linux-113.0.5672.63/chrome-linux64/chrome'
 queries:
 
