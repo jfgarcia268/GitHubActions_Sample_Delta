@@ -1,0 +1,7 @@
+Name: OS LWC Test
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - OmniScript/Test_TestLWC_English
+VlocityTypesToFetch:
+    - OmniScript
+SalesforceTypesToFetch:
